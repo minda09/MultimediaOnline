@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Praktikum 2 Interaktivitas</title>
+	<style type="text/css">
+	 canvas{
+	 background-image: url("bitmap.png"); background-size: 500px 520px;
+	 }
+	</style>
+</head>
+<body>
+<canvas width="500" height="520" id="canvas"></canvas>
+<script type="text/javascript">
+	var c=document.getElementById('canvas');
+	var ctx=c.getContext('2d');
+
+	document.body.addEventListener('mousedown',drawline);
+	function drawline(e)
+	{
+		var x=e.offsetX;
+		var y=e.offsetY;
+		ctx.lineTo(x,y);
+		ctx.lineWidth=2;
+		ctx.strokeStyle='white';
+		ctx.stroke();
+		//console.log('(x,y)koordinat:'+x+'');
+	}
+
+	document.body.addEventListener('keydown',enter);
+
+	function enter(e)
+	{
+		var keyCode = e.keyCode;
+		if(keyCode == 13){
+			ctx.lineWidth=2;
+			ctx.strokeStyle='white';
+			ctx.fillStyle = 'white';
+			ctx.fill();
+			ctx.stroke();
+		}
+		else{
+			ctx.beginPath();
+			var x = e.offsetX;
+			var y = e.offsetY;
+			ctx.lineTo(x,y);
+			ctx.lineWidth=2;
+			ctx.strokeStyle='white';
+			ctx.stroke();
+		}
+	}
+
+</script>
+<p> Nb: untuk berpindah menggambar pola rasi yang lain, silahkan tekan space setelah selesai menggambar pola rasi bintang <p>
+    <h3>Gambar rasi bintang ada dibawah ini </h3>
+<img  width="600" height="300" src="bitmap - Copy.png"></img>
+</body>
+</html>	
